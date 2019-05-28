@@ -46,3 +46,32 @@ html, body {
 .akutool_warning::after {
     font-family: 'IBM Plex Sans', Helvetica, sans-serif;
 }
+
+.demo-selection {
+    text-align: center;
+    padding: 0;
+    margin: 25px 0 0;
+}
+
+.demo-selection a {
+    color: rgba(0, 0, 0, 1);
+    text-decoration: none;
+}
+
+.demo-selection li {
+    display: inline;
+    padding: 5px;
+    background-color: rgba(166, 0, 0, 0);
+}
+
+.demo-selection a.active {
+    color: rgba(255, 255, 255, 1);
+}
+
+.demo-selection a.active li, .demo-selection a.active:hover li {
+    background-color: rgba(166, 0, 0, 1);
+}
+
+.demo-selection a:hover li {
+    background-color: rgba(166, 0, 0, .5);
+}
