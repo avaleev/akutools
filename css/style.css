@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+
+html, body {
+    background-color: #fff;
+    background-image: url('../images/seamless_paper_texture.png');
+    font-family: 'IBM Plex Sans', Helvetica, sans-serif;
+}
+
+.akumalogo {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    bottom: 10px;
+    right: 10px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .5);
+}
+
+.demo-navigationbar {
+    position: relative;
+    margin: 25px 0;
+}
+
+.demo-container {
+    position: absolute;
+    width: calc(70% - 20px);
+    background-color: rgba(255, 255, 255, 0.9);
+    left: 15%;
+    padding: 25px 10px;
+    border-top: solid 3px rgba(200, 200, 200, 1);
+    box-shadow: 0 1px 0 1px rgba(150, 150, 150, 0.1);
+    border-radius: 3px;
+}
+
+.demo-name {
+    text-align: center;
+    font-size: 60px;
+    margin: 0;
+}
+
+.demo-title {
+    text-align: center;
+    margin: 0;
+}
+
+.akutool_failure::after,
+.akutool_warning::after {
+    font-family: 'IBM Plex Sans', Helvetica, sans-serif;
+}

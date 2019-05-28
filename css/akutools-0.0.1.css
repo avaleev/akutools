@@ -1,0 +1,410 @@
+/* akutool_form start */
+
+.akutool_pwd_wrapper,
+.akutool_pwdcheck_wrapper,
+.akutool_placeholder_wrapper{
+    position: relative;
+}
+
+.akutool_form.compact {
+    width: 300px;
+    margin: 0;
+}
+
+.akutool_form input, .akutool_form .akutool_form_button {
+    position: relative;
+    width: calc(100% - 30px);
+    border: none;
+    background: rgba(255, 255, 255, 1);
+    padding: 10px;
+    margin: 5px;
+    box-shadow: 0 0 12.5px rgba(150, 150, 150, .2);
+    border-radius: 3px;
+}
+
+.akutool_form input[type="checkbox"] {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.akutool_form input.akutool_form_placeholder,
+.akutool_form .akutool_form_button.akutool_form_placeholder {
+    margin: 20px 5px 5px 5px;
+}
+
+.akutool_form .akutool_form_button {
+    width: calc(100% - 10px);
+}
+
+.akutool_form_button {
+    transition: all .15s ease 0s;
+    background-color: rgba(175, 0, 0, 1) !important;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+    box-shadow: inset -300px 0 50px 0px rgba(0, 0, 0, 0.2) !important;
+    cursor: pointer;
+}
+
+.akutool_form_button:hover {
+    box-shadow: inset 0 0 50px -50px rgba(0, 0, 0, 0.2) !important;
+}
+
+.akutool_form_password {
+    padding-bottom: 14px !important;
+}
+
+.akutool_pwd_strength {
+    transition: all .2s ease 0s;
+    position: absolute;
+    background-color: rgba(200, 200, 200, 1);
+    height: 4px;
+    width: calc(100% - 10px);
+    margin: -9px 5px 5px 5px;
+    border-radius: 0 0 3px 3px;
+}
+
+.akutool_pwd_strength_stat {
+    transition: all .2s ease 0s;
+    position: absolute;
+    padding: 10px;
+    margin: 0;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 1);
+    right: -10px;
+    bottom: 6px;
+    transform: translateX(100%);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+}
+
+.akutool_pwd_strength.vryweak {
+    width: calc(20% - 10px);
+    border-radius: 0;
+    background: rgba(231,55,55,1);
+    background: -moz-linear-gradient(left, rgba(231,55,55,1) 0%, rgba(207,97,27,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(231,55,55,1)), color-stop(100%, rgba(207,97,27,1)));
+    background: -webkit-linear-gradient(left, rgba(231,55,55,1) 0%, rgba(207,97,27,1) 100%);
+    background: -o-linear-gradient(left, rgba(231,55,55,1) 0%, rgba(207,97,27,1) 100%);
+    background: -ms-linear-gradient(left, rgba(231,55,55,1) 0%, rgba(207,97,27,1) 100%);
+    background: linear-gradient(to right, rgba(231,55,55,1) 0%, rgba(207,97,27,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73737', endColorstr='#cf611b', GradientType=1 );
+}
+
+.akutool_pwd_strength.weak {
+    width: calc(40% - 10px);
+    border-radius: 0;
+    background: rgba(207,117,27,1);
+    background: -moz-linear-gradient(left, rgba(207,97,27,1) 0%, rgba(144,144,12,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(207,117,27,1)), color-stop(100%, rgba(144,144,12,1)));
+    background: -webkit-linear-gradient(left, rgba(207,97,27,1) 0%, rgba(144,144,12,1) 100%);
+    background: -o-linear-gradient(left, rgba(207,97,27,1) 0%, rgba(144,144,12,1) 100%);
+    background: -ms-linear-gradient(left, rgba(207,97,27,1) 0%, rgba(144,144,12,1) 100%);
+    background: linear-gradient(to right, #cf611b 0%, rgba(144,144,12,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf611b', endColorstr='#90900c', GradientType=1 );
+}
+
+.akutool_pwd_strength.good {
+    width: calc(60% - 10px);
+    border-radius: 0;
+    background: rgba(144,144,12,1);
+    background: -moz-linear-gradient(left, rgba(144,144,12,1) 0%, rgba(117,146,0,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(144,144,12,1)), color-stop(100%, rgba(117,146,0,1)));
+    background: -webkit-linear-gradient(left, rgba(144,144,12,1) 0%, rgba(117,146,0,1) 100%);
+    background: -o-linear-gradient(left, rgba(144,144,12,1) 0%, rgba(117,146,0,1) 100%);
+    background: -ms-linear-gradient(left, rgba(144,144,12,1) 0%, rgba(117,146,0,1) 100%);
+    background: linear-gradient(to right, rgba(144,144,12,1) 0%, rgba(117,146,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#90900c', endColorstr='#759200', GradientType=1 );
+}
+
+.akutool_pwd_strength.strong {
+    width: calc(80% - 10px);
+    border-radius: 0;
+    background: rgba(117,146,0,1);
+    background: -moz-linear-gradient(left, rgba(117,146,0,1) 0%, rgba(0,143,0,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(117,146,0,1)), color-stop(100%, rgba(0,143,0,1)));
+    background: -webkit-linear-gradient(left, rgba(117,146,0,1) 0%, rgba(0,143,0,1) 100%);
+    background: -o-linear-gradient(left, rgba(117,146,0,1) 0%, rgba(0,143,0,1) 100%);
+    background: -ms-linear-gradient(left, rgba(117,146,0,1) 0%, rgba(0,143,0,1) 100%);
+    background: linear-gradient(to right, rgba(117,146,0,1) 0%, rgba(0,143,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#759200', endColorstr='#008f00', GradientType=1 );
+}
+
+.akutool_pwd_strength.vrystrong {
+    width: calc(100% - 10px);
+    border-radius: 0 0 3px 0;
+    background: rgba(0,143,0,1);
+    background: -moz-linear-gradient(left, rgba(0,143,0,1) 0%, rgba(0,145,135,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,143,0,1)), color-stop(100%, rgba(0,145,135,1)));
+    background: -webkit-linear-gradient(left, rgba(0,143,0,1) 0%, rgba(0,145,135,1) 100%);
+    background: -o-linear-gradient(left, rgba(0,143,0,1) 0%, rgba(0,145,135,1) 100%);
+    background: -ms-linear-gradient(left, rgba(0,143,0,1) 0%, rgba(0,145,135,1) 100%);
+    background: linear-gradient(to right, rgba(0,143,0,1) 0%, rgba(0,145,135,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008f00', endColorstr='#009187', GradientType=1 );
+}
+
+/*.akutool_pwd_strength.vryweak:after, .akutool_pwd_strength.weak:after,
+.akutool_pwd_strength.good:after, .akutool_pwd_strength.strong:after,
+.akutool_pwd_strength.vrystrong:after {
+    opacity: 1;
+}*/
+
+.akutool_form_password:focus ~ .akutool_pwd_strength.vryweak ~ .akutool_pwd_strength_stat,
+.akutool_form_password:focus ~ .akutool_pwd_strength.weak ~ .akutool_pwd_strength_stat,
+.akutool_form_password:focus ~ .akutool_pwd_strength.good ~ .akutool_pwd_strength_stat,
+.akutool_form_password:focus ~ .akutool_pwd_strength.strong ~ .akutool_pwd_strength_stat,
+.akutool_form_password:focus ~ .akutool_pwd_strength.vrystrong ~ .akutool_pwd_strength_stat{
+    opacity: 1;
+}
+
+.akutool_pwd_strength.vryweak + .akutool_pwd_strength_stat{
+    white-space: nowrap;
+    color: #fff;
+    background: rgba(231,55,55,1);
+    background: -moz-linear-gradient(left, rgba(231,55,55,1) 0%, rgba(207,117,27,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(231,55,55,1)), color-stop(100%, rgba(207,117,27,1)));
+    background: -webkit-linear-gradient(left, rgba(231,55,55,1) 0%, rgba(207,117,27,1) 100%);
+    background: -o-linear-gradient(left, rgba(231,55,55,1) 0%, rgba(207,117,27,1) 100%);
+    background: -ms-linear-gradient(left, rgba(231,55,55,1) 0%, rgba(207,117,27,1) 100%);
+    background: linear-gradient(to right, rgba(231,55,55,1) 0%, rgba(207,117,27,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73737', endColorstr='#cf751b', GradientType=1 );
+}
+
+.akutool_pwd_strength.weak + .akutool_pwd_strength_stat {
+    white-space: nowrap;
+    color: #fff;
+    background: rgba(207,117,27,1);
+    background: -moz-linear-gradient(left, rgba(207,117,27,1) 0%, rgba(144,144,12,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(207,117,27,1)), color-stop(100%, rgba(144,144,12,1)));
+    background: -webkit-linear-gradient(left, rgba(207,117,27,1) 0%, rgba(144,144,12,1) 100%);
+    background: -o-linear-gradient(left, rgba(207,117,27,1) 0%, rgba(144,144,12,1) 100%);
+    background: -ms-linear-gradient(left, rgba(207,117,27,1) 0%, rgba(144,144,12,1) 100%);
+    background: linear-gradient(to right, rgba(207,117,27,1) 0%, rgba(144,144,12,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf751b', endColorstr='#90900c', GradientType=1 );
+}
+
+.akutool_pwd_strength.good + .akutool_pwd_strength_stat {
+    white-space: nowrap;
+    color: #fff;
+    background: rgba(144,144,12,1);
+    background: -moz-linear-gradient(left, rgba(144,144,12,1) 0%, rgba(117,146,0,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(144,144,12,1)), color-stop(100%, rgba(117,146,0,1)));
+    background: -webkit-linear-gradient(left, rgba(144,144,12,1) 0%, rgba(117,146,0,1) 100%);
+    background: -o-linear-gradient(left, rgba(144,144,12,1) 0%, rgba(117,146,0,1) 100%);
+    background: -ms-linear-gradient(left, rgba(144,144,12,1) 0%, rgba(117,146,0,1) 100%);
+    background: linear-gradient(to right, rgba(144,144,12,1) 0%, rgba(117,146,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#90900c', endColorstr='#759200', GradientType=1 );
+}
+
+.akutool_pwd_strength.strong + .akutool_pwd_strength_stat {
+    white-space: nowrap;
+    color: #fff;
+    background: rgba(117,146,0,1);
+    background: -moz-linear-gradient(left, rgba(117,146,0,1) 0%, rgba(0,143,0,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(117,146,0,1)), color-stop(100%, rgba(0,143,0,1)));
+    background: -webkit-linear-gradient(left, rgba(117,146,0,1) 0%, rgba(0,143,0,1) 100%);
+    background: -o-linear-gradient(left, rgba(117,146,0,1) 0%, rgba(0,143,0,1) 100%);
+    background: -ms-linear-gradient(left, rgba(117,146,0,1) 0%, rgba(0,143,0,1) 100%);
+    background: linear-gradient(to right, rgba(117,146,0,1) 0%, rgba(0,143,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#759200', endColorstr='#008f00', GradientType=1 );
+}
+
+.akutool_pwd_strength.vrystrong + .akutool_pwd_strength_stat {
+    white-space: nowrap;
+    color: #fff;
+    background: rgba(0,143,0,1);
+    background: -moz-linear-gradient(left, rgba(0,143,0,1) 0%, rgba(0,145,135,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,143,0,1)), color-stop(100%, rgba(0,145,135,1)));
+    background: -webkit-linear-gradient(left, rgba(0,143,0,1) 0%, rgba(0,145,135,1) 100%);
+    background: -o-linear-gradient(left, rgba(0,143,0,1) 0%, rgba(0,145,135,1) 100%);
+    background: -ms-linear-gradient(left, rgba(0,143,0,1) 0%, rgba(0,145,135,1) 100%);
+    background: linear-gradient(to right, rgba(0,143,0,1) 0%, rgba(0,145,135,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008f00', endColorstr='#009187', GradientType=1 );
+}
+
+.akutool_fake_placeholder {
+    transition: all .2s ease 0s;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.akutool_fake_placeholder.akutool_placeholder_up {
+    top: 0px;
+    left: 14px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.akutool_success,
+.akutool_failure,
+.akutool_warning {
+    position: absolute;
+    right: 15px;
+    top: 32px;
+}
+
+.akutool_success {
+    color: rgba(0, 145, 135, 1);
+    font-weight: normal;
+}
+
+.akutool_failure {
+    color: rgba(231, 55, 55, 1);
+    font-weight: normal;
+}
+
+.akutool_warning {
+    color: rgba(207, 117, 27, 1);
+    font-weight: lighter;
+}
+
+.akutool_field_success,
+.akutool_field_failure,
+.akutool_field_warning {
+    position: relative;
+}
+
+.akutool_failure::after,
+.akutool_warning::after {
+    position: absolute;
+    content: attr(data-message);
+    margin-top: 50%;
+    margin-left: 20px;
+    font-family: inherit;
+    width: 200px;
+    transform: translateY(-50%);
+}
+
+.akutool_checkbox_wrapper {
+    position: relative;
+    margin: 10px 5px 5px 5px;
+    min-height: 30px;
+}
+
+.akutool_checkbox_wrapper > label {
+    position: relative;
+    top: 5px;
+}
+
+.akutool_checkbox_1 {
+    position: absolute  !important;
+    width: 50px         !important;
+    height: 28px        !important;
+    margin: 0           !important;
+    left: 0             !important;
+    top: 0              !important;
+    border-radius: 25px !important;
+    z-index: 9          !important;
+    opacity: 0          !important;
+}
+
+.akutool_checkbox_1 ~ .akutool_checkbox_indicator {
+    transition: all 0.2s ease 0s;
+    position: relative;
+    float: left;
+    top: 0;
+    left: 0;
+    margin-right: 10px;
+    width: 50px;
+    height: 28px;
+    border-radius: 50px;
+    background-color: rgba(150, 150, 150, 0.5);
+}
+
+.akutool_checkbox_1:checked ~ .akutool_checkbox_indicator {
+    background-color: rgba(0, 143, 0, 1);
+}
+
+.akutool_checkbox_1 ~ .akutool_checkbox_trigger {
+    transition: all 0.2s ease 0s;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    height: 22px;
+    width: 22px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.akutool_checkbox_1:checked ~ .akutool_checkbox_trigger {
+    left: 25px;
+}
+
+.akutool_radiogroup1 {
+    position: relative;
+    white-space: nowrap;
+    margin: 10px 5px 5px 5px;
+    padding: 0;
+    border: none;
+}
+
+.akutool_radiogroup1 > .akutool_radio_wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border-bottom: solid 4px rgba(0,0,0,0.1);
+}
+
+.akutool_radiogroup1 > .akutool_radio_wrapper > input {
+    position: absolute;
+}
+
+.akutool_radiogroup1 > .akutool_radio_wrapper > label {
+    position: relative;
+    text-align: center;
+}
+
+/* akutool_form end */
+
+
+/* akutool_popup start */
+
+.akutool_popup {
+    position: absolute;
+    padding: 15px;
+    background-color: rgba(252, 252, 252, 1);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .25);
+    border-radius: 3px;
+}
+
+.akutool_popup_wrap {
+    transition: all .2s ease 0s;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    background-color: rgba(0, 0, 0, .45);
+    z-index: 9999;
+    opacity: 0;
+}
+
+.akutool_popup_wrap.akutool_active {
+    top: 0;
+    opacity: 1;
+}
+
+.akutool_popup_close {
+    transition: all .2s ease 0s;
+    position: absolute;
+    background: none;
+    border: none;
+    right: -30px;
+    top: 5px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, .8);
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.75);
+}
+
+.akutool_popup_close:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* akutool_popup end */
