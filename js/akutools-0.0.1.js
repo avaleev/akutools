@@ -1,18 +1,4 @@
 $(function(){
-// akutool_popup functionality --------------------------------------------------
-
-    // add backside wrapper and close button
-    $(".akutool_popup").wrap("<div class='akutool_popup_wrap'></div>");
-    $(".akutool_popup").append("<button class='akutool_popup_close'>X</button>");
-
-    // active popup passes active class to its parent wrapper
-    $(".akutool_popup.akutool_active").parent().addClass("akutool_active");
-    $(".akutool_popup.akutool_active").removeClass("akutool_active");
-
-// end of akutool_popup implementation ------------------------------------------
-
-
-
 // akutool_form functionality ---------------------------------------------------
 
     // akutool_form_custom rulesett implementation
@@ -163,12 +149,54 @@ $(function(){
 
     // end of placeholder styling -----------------------------------------------
 
+    
+    // akutool_form_example style simulation --------------------------------
+
+    $('.akutool_form_example').wrap("<div class='akutool_example_wrapper'></div>");
+    $('.akutool_form_example').each(function() {
+        if($(this).val() != '') {
+            $(this).addClass("akutool_focused");
+            $(this).parent().append("<label for='" + $(this).attr("id") + "' class='akutool_example akutool_example_up'>" + $(this).attr("placeholder") + "</label>");
+        } else {
+            $(this).parent().append("<label for='" + $(this).attr("id") + "' class='akutool_example'>" + $(this).attr("placeholder") + "</label>");
+        }
+        
+        $(this).attr("placeholder", '');
+    });
+
+    $("body").on("focusin", ".akutool_form_example", function() {
+        $(this).addClass("akutool_focused");
+        if(!$(this).parent().find(".akutool_example").hasClass("akutool_example_up")) {
+            if($(this).parent().find(".akutool_example").attr("class") != undefined) {
+                $(this).parent().find(".akutool_example").addClass("akutool_example_up");
+            } else {
+                $(this).parent().parent().find(".akutool_example").addClass("akutool_example_up");
+            }
+        }
+    }).on("focusout", ".akutool_form_example", function() {
+        if($(this).val() == '') {
+            $(this).removeClass("akutool_focused");
+            if($(this).parent().find(".akutool_example").attr("class") != undefined) {
+                $(this).parent().find(".akutool_example").removeClass("akutool_example_up");
+            } else {
+                $(this).parent().parent().find(".akutool_example").removeClass("akutool_example_up");
+            }
+        }
+    });
+
+    // end of example styling -----------------------------------------------
+
 
     // akutool_form_password strength check event handler -----------------------
 
-    $(".akutool_form_password").wrap("<div class='akutool_pwd_wrapper'></div>");
-    $(".akutool_pwd_wrapper").append("<div class='akutool_pwd_strength'></div>");
-    $(".akutool_pwd_wrapper").append("<div class='akutool_pwd_strength_stat'></div>");
+    $(".akutool_form_password").each(function() {
+        if($(this).data("check") == true) {
+            $(this).addClass("evaluated");
+            $(this).wrap("<div class='akutool_pwd_wrapper'></div>");
+            $(this).parent().append("<div class='akutool_pwd_strength'></div>");
+            $(this).parent().append("<div class='akutool_pwd_strength_stat'></div>");
+        }
+    });
 
     var pwd_strength_check = null;
     $("body").on("focusin", ".akutool_form_password", function() {
@@ -221,7 +249,7 @@ $(function(){
             }
         }, 200);
     }).on("focusout", ".akutool_form_password", function (){
-        clearInterval(pwd_strength_check);
+        if(pwd_strength_check != null) clearInterval(pwd_strength_check);
     });
 
     // end of password strength check -------------------------------------------
@@ -231,17 +259,19 @@ $(function(){
 
     var custom_validation = null;
     $("body").on("focusin", ".akutool_form_custom", function() {
-        let mole  = $(this);
-        custom_validation = setInterval(function (){
-            if (mole.val() != '') {
-                let result = ruleCheck(mole.data("rule"), mole.val());
-                assignResult(mole, result);
-            } else {
-                assignResult(mole, 'empty');
-            }
-        }, 200);
+        if ($(this).data("check") == true) {
+            let mole  = $(this);
+            custom_validation = setInterval(function (){
+                if (mole.val() != '') {
+                    let result = ruleCheck(mole.data("rule"), mole.val());
+                    assignResult(mole, result);
+                } else {
+                    assignResult(mole, 'empty');
+                }
+            }, 200);
+        }
     }).on("focusout", ".akutool_form_custom", function (){
-        clearInterval(custom_validation);
+        if(custom_validation != null) clearInterval(custom_validation);
     });
 
     // end of custom input validation -------------------------------------------
@@ -253,19 +283,21 @@ $(function(){
 
     var pwdcheck_validation = null;
     $("body").on("focusin", ".akutool_form_pwdcheck", function() {
-        let mole  = $(this);
-        pwdcheck_validation = setInterval(function (){
-            if(mole.val() != '') {
-                let result = ruleCheck('password_match', mole);
-                assignResult(mole, result);
-                assignResult($(".akutool_form_password#" + mole.attr("for")), result);
-            } else {
-                assignResult(mole, 'empty');
-                assignResult($(".akutool_form_password#" + mole.attr("for")), 'empty');
-            }
-        }, 200);
+        if ($(this).data('check') == true) {
+            let mole  = $(this);
+            pwdcheck_validation = setInterval(function (){
+                if(mole.val() != '') {
+                    let result = ruleCheck('password_match', mole);
+                    assignResult(mole, result);
+                    assignResult($(".akutool_form_password#" + mole.attr("for")), result);
+                } else {
+                    assignResult(mole, 'empty');
+                    assignResult($(".akutool_form_password#" + mole.attr("for")), 'empty');
+                }
+            }, 200);
+        }
     }).on("focusout", ".akutool_form_pwdcheck", function (){
-        clearInterval(pwdcheck_validation);
+        if(pwdcheck_validation != null) clearInterval(pwdcheck_validation);
     });
 
     // end of password match check ----------------------------------------------
@@ -275,17 +307,19 @@ $(function(){
 
     var email_validation = null;
     $("body").on("focusin", ".akutool_form_email", function() {
-        let mole  = $(this);
-        email_validation = setInterval(function (){
-            if( mole.val() != '' ) {
-                let result = ruleCheck("email", mole.val());
-                assignResult(mole, result);
-            } else {
-                assignResult(mole, 'empty');
-            }
-        }, 200);
+        if($(this).data('check') == true) {
+            let mole  = $(this);
+            email_validation = setInterval(function (){
+                if( mole.val() != '' ) {
+                    let result = ruleCheck("email", mole.val());
+                    assignResult(mole, result);
+                } else {
+                    assignResult(mole, 'empty');
+                }
+            }, 200);
+        }
     }).on("focusout", ".akutool_form_email", function (){
-        clearInterval(email_validation);
+        if(email_validation != null) clearInterval(email_validation);
     });
 
     // end of email check -------------------------------------------------------
@@ -302,15 +336,77 @@ $(function(){
     $('.akutool_checkbox_wrapper').append("<div class='akutool_checkbox_indicator'></div>");
     $('.akutool_checkbox_wrapper').append("<div class='akutool_checkbox_trigger'></div>");
 
-    $('.akutool_form_radiogroup > input').wrap("<div class='akutool_radio_wrapper'></div>");
-    $('.akutool_radio_wrapper').each(function() {
-        if($(this).next().attr('for') == $(this).children('input').attr('id')) {
-            $(this).next().appendTo($(this));
-        }
+    $('.akutool_form_radiogroup.radiogroup1 > label').each(function() {
+        let box = $(this).parent();
+        $(this).css("width", "calc(" + (100 / $('.akutool_form_radiogroup.radiogroup1 > input').length).toFixed(2) + "% - 3px)");
     });
 
     // radio and check boxes end ------------------------------------------------
 
+
+    // validate prefilled fields ------------------------------------------------
+
+    const akutools = ".akutool_form_custom," +
+                     ".akutool_form_email," +
+                     ".akutool_form_pwdcheck";
+
+    $(akutools).each(function () {
+        if($(this).val() != '') {
+            let result = 'empty';
+
+            if($(this).hasClass("akutool_form_custom"))
+            {
+                result = ruleCheck($(this).data("rule"), $(this).val());
+            }
+            else if ($(this).hasClass("akutool_form_email"))
+            {
+                result = ruleCheck("email", $(this).val());
+            }
+            else if ($(this).hasClass("akutool_form_pwdcheck"))
+            {
+                result = ruleCheck("password_match", $(this));
+            }
+            else
+            {
+                result = '';
+            }
+
+            assignResult($(this), result);
+        }
+    });
+
+    $('.akutool_form').submit(function( e ) {
+        let errors = 0;
+        $(this).find("input").each(function () {
+            if($(this).data("check") == true) {
+                if(!$(this).hasClass("akutool_field_success")) {
+                    ++errors;
+                }
+            }
+        });
+
+        if(errors != 0) {
+            alert("Some errors occured");
+            e.preventDefault();
+        }
+    });
+
+    // --------------------------------------------------------------------------
+
 // end of akutool_form implementation -------------------------------------------
+
+
+
+// akutool_popup functionality --------------------------------------------------
+
+    // add backside wrapper and close button
+    $(".akutool_popup").wrap("<div class='akutool_popup_wrap'></div>");
+    $(".akutool_popup").append("<button class='akutool_popup_close'>X</button>");
+
+    // active popup passes active class to its parent wrapper
+    $(".akutool_popup.akutool_active").parent().addClass("akutool_active");
+    $(".akutool_popup.akutool_active").removeClass("akutool_active");
+
+// end of akutool_popup implementation ------------------------------------------
 
 });

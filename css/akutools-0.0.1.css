@@ -2,7 +2,8 @@
 
 .akutool_pwd_wrapper,
 .akutool_pwdcheck_wrapper,
-.akutool_placeholder_wrapper{
+.akutool_placeholder_wrapper,
+.akutool_example_wrapper {
     position: relative;
 }
 
@@ -12,12 +13,13 @@
 }
 
 .akutool_form input, .akutool_form .akutool_form_button {
+    transition: all .2s ease 0s;
     position: relative;
-    width: calc(100% - 30px);
+    width: calc(100% - 20px);
     border: none;
     background: rgba(255, 255, 255, 1);
     padding: 10px;
-    margin: 5px;
+    margin: 5px 0;
     box-shadow: 0 0 12.5px rgba(150, 150, 150, .2);
     border-radius: 3px;
 }
@@ -30,13 +32,26 @@
     border-radius: 0;
 }
 
-.akutool_form input.akutool_form_placeholder,
-.akutool_form .akutool_form_button.akutool_form_placeholder {
-    margin: 20px 5px 5px 5px;
+.akutool_form input[type="checkbox"], .akutool_form input[type="radio"] {
+    cursor: pointer;
+}
+
+.akutool_form > label {
+    margin-left: 10px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.akutool_form input.akutool_form_placeholder {
+    margin: 20px 0 5px;
+}
+
+.akutool_form input.akutool_form_example.akutool_focused {
+    padding: 20px 10px 10px;
 }
 
 .akutool_form .akutool_form_button {
-    width: calc(100% - 10px);
+    width: 100%;
 }
 
 .akutool_form_button {
@@ -52,7 +67,7 @@
     box-shadow: inset 0 0 50px -50px rgba(0, 0, 0, 0.2) !important;
 }
 
-.akutool_form_password {
+.akutool_form_password.evaluated {
     padding-bottom: 14px !important;
 }
 
@@ -61,8 +76,8 @@
     position: absolute;
     background-color: rgba(200, 200, 200, 1);
     height: 4px;
-    width: calc(100% - 10px);
-    margin: -9px 5px 5px 5px;
+    width: 100%;
+    margin: -9px 0 5px;
     border-radius: 0 0 3px 3px;
 }
 
@@ -82,7 +97,7 @@
 }
 
 .akutool_pwd_strength.vryweak {
-    width: calc(20% - 10px);
+    width: 20%;
     border-radius: 0;
     background: rgba(231,55,55,1);
     background: -moz-linear-gradient(left, rgba(231,55,55,1) 0%, rgba(207,97,27,1) 100%);
@@ -95,7 +110,7 @@
 }
 
 .akutool_pwd_strength.weak {
-    width: calc(40% - 10px);
+    width: 40%;
     border-radius: 0;
     background: rgba(207,117,27,1);
     background: -moz-linear-gradient(left, rgba(207,97,27,1) 0%, rgba(144,144,12,1) 100%);
@@ -108,7 +123,7 @@
 }
 
 .akutool_pwd_strength.good {
-    width: calc(60% - 10px);
+    width: 60%;
     border-radius: 0;
     background: rgba(144,144,12,1);
     background: -moz-linear-gradient(left, rgba(144,144,12,1) 0%, rgba(117,146,0,1) 100%);
@@ -121,7 +136,7 @@
 }
 
 .akutool_pwd_strength.strong {
-    width: calc(80% - 10px);
+    width: 80%;
     border-radius: 0;
     background: rgba(117,146,0,1);
     background: -moz-linear-gradient(left, rgba(117,146,0,1) 0%, rgba(0,143,0,1) 100%);
@@ -134,7 +149,7 @@
 }
 
 .akutool_pwd_strength.vrystrong {
-    width: calc(100% - 10px);
+    width: 100%;
     border-radius: 0 0 3px 0;
     background: rgba(0,143,0,1);
     background: -moz-linear-gradient(left, rgba(0,143,0,1) 0%, rgba(0,145,135,1) 100%);
@@ -225,26 +240,39 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008f00', endColorstr='#009187', GradientType=1 );
 }
 
-.akutool_fake_placeholder {
+.akutool_fake_placeholder, .akutool_example {
     transition: all .2s ease 0s;
     position: absolute;
-    top: 30px;
-    left: 15px;
+    left: 10px;
     color: rgba(0, 0, 0, 0.5);
+}
+
+.akutool_fake_placeholder {
+    top: 30px;
+}
+
+.akutool_example {
+    top: 15px;
 }
 
 .akutool_fake_placeholder.akutool_placeholder_up {
     top: 0px;
-    left: 14px;
+    font-size: 14px;
     color: rgba(0, 0, 0, 0.8);
+}
+
+.akutool_example.akutool_example_up {
+    top: 10px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.35);
 }
 
 .akutool_success,
 .akutool_failure,
 .akutool_warning {
     position: absolute;
-    right: 15px;
-    top: 32px;
+    right: 11px;
+    bottom: 16px;
 }
 
 .akutool_success {
@@ -274,14 +302,16 @@
     content: attr(data-message);
     margin-top: 50%;
     margin-left: 20px;
-    font-family: inherit;
     width: 200px;
     transform: translateY(-50%);
+    padding: 5px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(50, 50, 50, 0.2);
 }
 
 .akutool_checkbox_wrapper {
     position: relative;
-    margin: 10px 5px 5px 5px;
+    margin: 10px 0 5px;
     min-height: 30px;
 }
 
@@ -290,7 +320,7 @@
     top: 5px;
 }
 
-.akutool_checkbox_1 {
+.akutool_form_checkbox.chkbox1 {
     position: absolute  !important;
     width: 50px         !important;
     height: 28px        !important;
@@ -302,7 +332,7 @@
     opacity: 0          !important;
 }
 
-.akutool_checkbox_1 ~ .akutool_checkbox_indicator {
+.akutool_form_checkbox.chkbox1 ~ .akutool_checkbox_indicator {
     transition: all 0.2s ease 0s;
     position: relative;
     float: left;
@@ -315,11 +345,11 @@
     background-color: rgba(150, 150, 150, 0.5);
 }
 
-.akutool_checkbox_1:checked ~ .akutool_checkbox_indicator {
+.akutool_form_checkbox.chkbox1:checked ~ .akutool_checkbox_indicator {
     background-color: rgba(0, 143, 0, 1);
 }
 
-.akutool_checkbox_1 ~ .akutool_checkbox_trigger {
+.akutool_form_checkbox.chkbox1 ~ .akutool_checkbox_trigger {
     transition: all 0.2s ease 0s;
     position: absolute;
     top: 3px;
@@ -330,33 +360,41 @@
     background-color: rgba(255, 255, 255, 1);
 }
 
-.akutool_checkbox_1:checked ~ .akutool_checkbox_trigger {
+.akutool_form_checkbox.chkbox1:checked ~ .akutool_checkbox_trigger {
     left: 25px;
 }
 
-.akutool_radiogroup1 {
+.akutool_form_radiogroup.radiogroup1 {
     position: relative;
-    white-space: nowrap;
-    margin: 10px 5px 5px 5px;
+    margin: 10px 0;
     padding: 0;
     border: none;
+    text-align: center;
 }
 
-.akutool_radiogroup1 > .akutool_radio_wrapper {
+.akutool_form_radiogroup.radiogroup1 > .akutool_radio_wrapper {
     position: relative;
     display: inline-block;
     margin: 0;
     padding: 0;
-    border-bottom: solid 4px rgba(0,0,0,0.1);
 }
 
-.akutool_radiogroup1 > .akutool_radio_wrapper > input {
+.akutool_form_radiogroup.radiogroup1 > input {
     position: absolute;
+    display: none;
 }
 
-.akutool_radiogroup1 > .akutool_radio_wrapper > label {
+.akutool_form_radiogroup.radiogroup1 > label {
+    transition: all 0.15s ease 0s;
+    display: inline-block;
     position: relative;
     text-align: center;
+    border-bottom: solid 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.akutool_form_radiogroup.radiogroup1 > input:checked + label {
+    border-bottom: solid 4px rgba(0,0,0,0.5);
 }
 
 /* akutool_form end */

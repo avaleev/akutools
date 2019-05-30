@@ -18,30 +18,54 @@
         <a href="./forms.html" class="active"><li>Forms</li></a>
       </ul>
     </nav>
-    <div class="demo-container" id="login_form">
-        <form class="akutool_form compact" id="custom_form">
-            <input type="text"     name="nickname" id="nickname" class="akutool_form_custom   akutool_form_placeholder" placeholder="Nickname" required data-rule="custom-rule-1" />
-            <input type="email"    name="email"    id="email"    class="akutool_form_email    akutool_form_placeholder" placeholder="E-mail"   required />
-            <input type="password" name="pwd"      id="pwd"      class="akutool_form_password akutool_form_placeholder" placeholder="Password" required />
-            <input type="password" name="check"    id="check"    class="akutool_form_pwdcheck akutool_form_placeholder" placeholder="Re-enter Password" for="pwd" required />
-            <input type="checkbox" name="newslttr" id="newslttr" class="akutool_form_checkbox akutool_checkbox_1" />
+    <div class="demo-main-container" id="login_form">
+        <h2 class="demo-guide-title">Form Demo</h2>
+        <div>
+          <form class="akutool_form compact" id="custom_form">
+            <input type="text"     name="nickname" id="nickname" class="akutool_form_custom   akutool_form_placeholder" placeholder="Nickname"            required data-check=true data-rule="custom-rule-1" />
+            <label for="email">E-Mail</label>
+            <input type="email"    name="email"    id="email"    class="akutool_form_email    akutool_form_example"     placeholder="akuma@example.com"   required data-check=true />
+            <input type="password" name="pwd"      id="pwd"      class="akutool_form_password akutool_form_placeholder" placeholder="Password"            required data-check=true />
+            <input type="password" name="check"    id="check"    class="akutool_form_pwdcheck akutool_form_placeholder" placeholder="Re-enter Password"   required data-check=true for="pwd" />
+            <input type="checkbox" name="newslttr" id="newslttr" class="akutool_form_checkbox chkbox1" />
+
             <label for="newslttr">Subscribe to newsletter</label>
-            <!-- <fieldset class="akutool_form_radiogroup akutool_radiogroup1">
+            <fieldset class="akutool_form_radiogroup radiogroup1">
               <legend>Select authority</legend>
-              <input type="radio" name="acctype" id="auth-user"  value="user"  class="akutool_form_radiobox akutool_radio_1" />
+              <input type="radio" name="acctype" id="auth-user"  value="user"  class="akutool_form_radiobox rdio1" />
                 <label for="auth-user">User</label>
-              <input type="radio" name="acctype" id="auth-admin" value="admin" class="akutool_form_radiobox akutool_radio_1" />
+              <input type="radio" name="acctype" id="auth-admin" value="admin" class="akutool_form_radiobox rdio1" />
                 <label for="auth-admin">Admin</label>
-              <input type="radio" name="acctype" id="auth-moder" value="moder" class="akutool_form_radiobox akutool_radio_1" />
+              <input type="radio" name="acctype" id="auth-moder" value="moder" class="akutool_form_radiobox rdio1" />
                 <label for="auth-moder">Moderator</label>
-            </fieldset> -->
+            </fieldset>
             <button class="akutool_form_button">SUBMIT</button>
-        </form>
+          </form>
+        </div>
+        <div class="demo-sideblock">
+          <ul>
+            <li><span><b>Custom fields</b> invite you to define your own rule checks. For full guide on rule definition follow this <a href="#custom-fields" class="demo-goto">link</a></span></li>
+            <li><span><b>Example</b> and <b>Placeholder</b> fields have special styling when focused and filled as shown in the form on the left. (First field has Placeholder styling and the second has Example styling)</span></li>
+            <li><span><b>Password field</b> with data attribure <b>Check</b> will display password strength depending on predefined rules, you can find and modify these rules under <i>"akutool_form_password strength check event handler"</i> section in your plugin .js file</span></li>
+            <li><span><b>Password check field</b> with attribute <b>for</b> pointing at target password field will indicate if passwords match or not</span></li>
+            <li><span>You can select <b>checkboxes</b> and <b>radio buttons</b> from a variety of provided styles. See full list of styles <a href="#checkboxes-and-radio" class="demo-goto">here</a></span></li>
+          </ul>
+        </div>
     </div>
 
-    <img src="./images/akumanookami_logo.png" class="akumalogo" />
+    <div class="demo-full-reference">
+      <div class="demo-ref" id="custom-fields">
+          <h2 class="demo-guide-title">Akutools: Forms - Reference</h2><hr/>
+          <!--<h2 class="demo-guide-title">Custom Fields</h2>
+          <form class="akutool_form compact">
+            <input type="text" name="demo1" id="demo1" class="akutool_form_custom" placeholder="Custom field" data-check=true data-rule="demo-rule" />
+          </form>-->
+      </div>
+    </div>
+
+    <img src="./images/akumanookami-calligraphy.png" class="akumalogo" alt="悪魔の狼" />
 
     <script src="./js/jquery-3.3.1.min.js"></script>
-    <script src="./js/akutools-0.0.1.js" async></script>
+    <script type="text/javascript" src="./js/akutools-0.0.1.js" async></script>
   </body>
 </html>
